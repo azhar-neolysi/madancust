@@ -1,0 +1,20 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>Select Locaton on Map</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+
+<ion-content>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Select Location on Map</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="dismiss()">
+          <ion-icon slot="icon-only" name="send"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <div #map id="leafletMap" class="map-div" style="height: 80%; width: 100%"></div>
+</ion-content>

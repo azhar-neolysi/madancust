@@ -1,0 +1,199 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-title *ngIf="consignerId===null">
+      {{'Consigner.Create Consigner'|translate}}
+    </ion-title>
+    <ion-title *ngIf="consignerId!==null">
+      {{'Consigner.Edit Consigner'|translate}}
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-icon (click)="submit()" class="sendbtn" name="send-sharp"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form class="form" [formGroup]="consignerForm">
+    <ion-card>
+      <ion-card-content>
+        <ion-item class="form-item">
+          <ion-label>{{'Consigner.Name'|translate}}:</ion-label>
+          <ion-input
+            type="text"
+            placeholder="Madan"
+            formControlName="name"
+          ></ion-input>
+        </ion-item>
+        <ion-item class="form-item">
+          <ion-label>{{'Consigner.GST NO'|translate}}:</ion-label>
+          <ion-input
+            type="text"
+            placeholder="XXXXXXXXXXXXXX"
+            formControlName="gstno"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item class="form-item">
+          <ion-label>{{'Consigner.PAN'|translate}}:</ion-label>
+          <ion-input
+            type="text"
+            placeholder="XXXXXXXXXXX"
+            formControlName="pannumber"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item class="form-item">
+          <ion-label>{{'Consigner.Phone No'|translate}}:&nbsp;</ion-label>
+          <ion-input
+            type="number"
+            placeholder="9632147850"
+            formControlName="phoneNo"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item class="form-item">
+          <ion-label>{{'Consigner.Mobile No'|translate}}:</ion-label>
+          <ion-input
+            type="number"
+            placeholder=" 9632147850"
+            formControlName="mobileNo"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item class="form-item">
+          <ion-label>{{'Consigner.Email'|translate}}:</ion-label>
+          <ion-input
+            type="email"
+            placeholder="a@a.com"
+            formControlName="email"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item class="form-item">
+          <ion-label>{{'Consigner.Website'|translate}}:&nbsp;</ion-label>
+          <ion-input
+            type="url"
+            placeholder=" www.xyz.com"
+            formControlName="website"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item class="form-item">
+          <ion-label>{{'Consigner.Description'|translate}}:</ion-label>
+          <ion-textarea
+            type="text"
+            formControlName="description"
+          ></ion-textarea>
+        </ion-item>
+        <!-- <ion-item class="form-item">
+          <ion-label>{{'Consigner.Country'|translate}}:</ion-label>
+          <ion-select
+            placeholder="Select One"
+            formControlName="refReferenceListCountryId"
+            interface="action-sheet"
+            mode="ios"
+          >
+            <ion-select-option
+              *ngFor="let item of countries"
+              [value]="item.referenceListId"
+              >{{item.referenceListIdName}}</ion-select-option
+            >
+          </ion-select>
+        </ion-item> -->
+
+        <ion-item class="form-item">
+          <ion-label>{{'Consigner.State'|translate}}:</ion-label>
+          <!-- <ion-select
+            placeholder="Select One"
+            formControlName="refReferenceListStateId"
+            interface="action-sheet"
+            mode="ios"
+            >
+            <ion-select-option
+              *ngFor="let item of states"
+              [value]="item.referenceListId"
+              >{{item.referenceListIdName}}</ion-select-option
+            >
+          </ion-select> -->
+          <ion-input
+          [(ngModel)]="slectedState"
+          type="text"
+        placeholder="Select State"
+        formControlName="refReferenceListStateId"
+        readonly="true"
+        (click)="showState('state')"
+      ></ion-input>
+      <div *ngIf="showState1 && !showCity">
+        <ion-searchbar (ionChange)="searchState($event)" disabled="false"></ion-searchbar>
+        <ion-list>
+          <ion-item *ngFor="let state of statess;index as i" (click)="select(state,'state')">
+            <ion-text
+              >{{state.referenceListIdName}}</ion-text
+            >
+          </ion-item>
+        </ion-list>
+      </div>
+
+        </ion-item>
+
+        <ion-item class="form-item">
+          <ion-label>{{'Consigner.City'|translate}}</ion-label>
+          <!-- <ion-select
+            placeholder="Select One"
+            formControlName="refReferenceListCityId"
+            interface="action-sheet"
+            mode="ios"
+          >
+            <ion-select-option
+              *ngFor="let item of cities"
+              [value]="item.referenceListId"
+              >{{item.referenceListIdName}}</ion-select-option
+            >
+          </ion-select> -->
+          <ion-input
+          [(ngModel)]="slectedCity"
+        type="text"
+        placeholder="Select City"
+        formControlName="refReferenceListCityId"
+        readonly="true"
+        (click)="showState('city')"
+      ></ion-input>
+      <div *ngIf="!showState1 && showCity">
+        <ion-searchbar (ionChange)="searchState($event)"></ion-searchbar>
+        <ion-list>
+          <ion-item *ngFor="let city of cityss;index as i" (click)="select(city,'city')">
+            <ion-text
+              >{{city.referenceListIdName}}</ion-text
+            >
+          </ion-item>
+        </ion-list>
+      </div>
+
+        </ion-item>
+
+        <ion-item class="form-item">
+          <ion-label>{{'Consigner.Flat/Building No'|translate}}:</ion-label>
+          <ion-textarea type="text" formControlName="address1"></ion-textarea>
+        </ion-item>
+
+        <ion-item class="form-item">
+          <ion-label>{{'Consigner.Address Line 1'|translate}}:</ion-label>
+          <ion-textarea type="text" formControlName="address2"></ion-textarea>
+        </ion-item>
+
+        <ion-item class="form-item">
+          <ion-label>{{'Consigner.Address Line 2'|translate}}:</ion-label>
+          <ion-textarea type="text" formControlName="address3"></ion-textarea>
+        </ion-item>
+
+        <!-- <ion-item class="form-item">
+                  <ion-label>{{'Consigner.Land Mark'|translate}}:</ion-label>
+                  <ion-textarea type="text" formControlName="address4"></ion-textarea>
+              </ion-item> -->
+      </ion-card-content>
+    </ion-card>
+  </form>
+</ion-content>

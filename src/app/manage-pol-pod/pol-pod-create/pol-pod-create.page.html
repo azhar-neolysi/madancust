@@ -1,0 +1,167 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-title *ngIf="polPodId===null">
+      {{'POLPOD.create POLPOD'|translate}}
+    </ion-title>
+    <ion-title *ngIf="polPodId!==null">
+      {{'POLPOD.Edit POLPOD'|translate}}
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end" class="submit">
+      <ion-icon (click)="submit()" class="sendbtn" name="send-sharp"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form class="form" [formGroup]="polPodForm">
+    <ion-card>
+      <ion-card-content>
+        <ion-item class="form-item">
+          <ion-label>{{'POLPOD.Country'|translate}}</ion-label>
+          <ion-select
+            placeholder="Select One"
+            interface="action-sheet"
+            formControlName="refReferenceListCountryId"
+            mode="ios"
+          >
+            <ion-select-option
+              *ngFor="let item of countries"
+              [value]="item.referenceListId"
+              >{{item.referenceListIdName}}</ion-select-option
+            >
+          </ion-select>
+        </ion-item>
+        <ion-item class="form-item">
+          <ion-label>{{'POLPOD.State'|translate}}</ion-label>
+          <!-- <ion-select
+            placeholder="Select One"
+            formControlName="refReferenceListStateId"
+            interface="action-sheet"
+            mode="ios"
+           >
+
+            <ion-select-option
+            type="number"
+              *ngFor="let item of states"
+              [value]="item.referenceListId"
+              >{{item.referenceListIdName}}</ion-select-option
+            >
+          </ion-select> -->
+          <ion-input
+            type="text"
+            [placeholder]="selectState1"
+            [(ngModel)]="slectedState"
+            formControlName="refReferenceListStateId"
+            readonly="true"
+            (click)="showState('state')"
+          ></ion-input>
+          <div *ngIf="showState1 && !showCity">
+            <ion-searchbar (ionChange)="searchState($event)"></ion-searchbar>
+            <ion-list>
+              <ion-item
+                *ngFor="let state of statess;index as i"
+                (click)="select(state,'state')"
+              >
+                <ion-text>{{state.referenceListIdName}}</ion-text>
+              </ion-item>
+            </ion-list>
+          </div>
+        </ion-item>
+        <ion-item class="form-item">
+          <ion-label>{{'POLPOD.City'|translate}}</ion-label>
+          <!--
+          <ion-select
+            placeholder="Select One"
+            formControlName="refReferenceListCityId"
+            interface="action-sheet"
+            mode="ios"
+          >
+          <ion-select-option
+              *ngFor="let item of cities"
+              [value]="item.referenceListId"
+              >{{item.referenceListIdName}}</ion-select-option
+            >
+          </ion-select> -->
+          <ion-input
+            type="text"
+            [placeholder]="selectCity1"
+            [(ngModel)]="slectedCity"
+            formControlName="refReferenceListCityId"
+            readonly="true"
+            (click)="showState('city')"
+          ></ion-input>
+          <div *ngIf="!showState1 && showCity">
+            <ion-searchbar (ionChange)="searchState($event)"></ion-searchbar>
+            <ion-list>
+              <ion-item
+                *ngFor="let city of cityss;index as i"
+                (click)="select(city,'city')"
+              >
+                <ion-text>{{city.referenceListIdName}}</ion-text>
+              </ion-item>
+            </ion-list>
+          </div>
+        </ion-item>
+
+        <ion-item class="form-item">
+          <ion-label>{{'POLPOD.Flat/Building No'|translate}}:</ion-label>
+          <ion-textarea type="text" formControlName="address1"></ion-textarea>
+        </ion-item>
+
+        <ion-item class="form-item">
+          <ion-label>{{'POLPOD.Address Line 1'|translate}}:</ion-label>
+          <ion-textarea type="text" formControlName="address2"></ion-textarea>
+        </ion-item>
+
+        <ion-item class="form-item">
+          <ion-label>{{'POLPOD.Address Line 2'|translate}}:</ion-label>
+          <ion-textarea type="text" formControlName="address3"></ion-textarea>
+        </ion-item>
+        <ion-item class="form-item">
+          <ion-label>Pincode:</ion-label>
+          <ion-textarea type="text" formControlName="pin"></ion-textarea>
+        </ion-item>
+
+        <ion-item class="form-item">
+          <ion-label>{{'POLPOD.POL/POD'|translate}}:</ion-label>
+          <ion-select
+            [compareWith]="compareWith"
+            placeholder="Select One"
+            interface="action-sheet"
+            formControlName="refReferenceListPolpodtypeId"
+            mode="ios"
+          >
+            <ion-select-option
+              *ngFor="let item of polPods"
+              [value]="item.referenceListId"
+              >{{item.referenceListIdName}}</ion-select-option
+            >
+          </ion-select>
+        </ion-item>
+
+        <ion-item class="form-item">
+          <ion-label>{{'POLPOD.Location'|translate}}:</ion-label>
+          <ion-input
+            placeholder="Tambaram"
+            type="text"
+            formControlName="location"
+            (click)="popover()"
+            expand="block"
+          ></ion-input>
+          <ion-icon slot="end" name="location"></ion-icon>
+        </ion-item>
+
+        <!-- <ion-item  class="form-item">
+          <ion-label position="floating">Enter Address</ion-label>
+          <ion-input type="text" placeholder="Address"></ion-input>
+          <ion-icon slot="end" name="location"></ion-icon>
+        </ion-item> -->
+      </ion-card-content>
+    </ion-card>
+  </form>
+  <!-- <div #map id="map" class="map-div"></div> -->
+
+</ion-content>

@@ -1,0 +1,288 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+@import "~leaflet/dist/leaflet.css";
+
+:root {
+  // --primary-color: #d62912;
+  --primary-color: #6e33a1;
+  // --primary-color: #3a5 ;
+  // #fbbc05
+  // --secondary-color: #f4b05f;
+  --secondary-color: #6e33a1;
+  // --bg-color: #e9c079;
+  // --bg-color: #fbbc05; (Y_bg)
+  --bg-color: #efefef; // (Y1_bg)
+  --danger-color: rgb(255, 0, 0);
+}
+
+ion-app {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+ion-content {
+  --background: var(--bg-color) !important;
+}
+
+// ion-list {
+//     --background: var(--bg-color);
+// }
+// ion-item {
+//     --background: var(--bg-color);
+// }
+.toolbar {
+  --background: var(--primary-color);
+  --color: white;
+}
+
+.t-center {
+  text-align: center;
+}
+
+.no-padding {
+  padding: 0px;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.highlight {
+  color: var(--primary-color);
+}
+
+ion-card {
+  --background: white;
+}
+
+.danger-toast {
+  background-color: red !important;
+  color: white !important;
+}
+
+// .modal{
+//   display: block !important; /* I added this to see the modal, you don't need this */
+// }
+
+// /* Important part */
+// .modal-dialog{
+//   overflow-y: initial !important
+// }
+// .modal-body{
+//   height: 80vh;
+//   overflow-y: auto;
+// }
+
+
+
+// .my-custom-modal-css .modal-wrapper {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+// .my-custom-modal-css .modal-wrapper .modal-content {
+//   max-height: 80vh; /* Adjust the max height as needed */
+//   overflow-y: auto; /* Enable vertical scrolling */
+// }
+
+
+.my-custom-modal-css .modal-wrapper .modal-content {
+ max-height: 50%;
+  // top: 25%;
+  // bottom: 25%;
+  position: absolute;
+  display: block;
+  overflow-y: scroll;
+  // overflow-y: auto;
+
+}
+.my-map-modal-css .modal-wrapper .modal-content {
+ max-height:100%;
+  // top: 25%;
+  // bottom: 25%;
+  position: absolute;
+  display: block;
+  overflow-y: scroll;
+  // overflow-y: auto;
+
+}
+// .my-custom-modal-css {
+//   --height: 80%; /* Custom property to set modal height */
+//   --top-offset: 10%; /* Custom property to adjust top position */
+//   --bottom-offset: 10%; /* Custom property to adjust bottom position */
+// }
+
+// /* Apply custom styles to the modal */
+// ion-modal.my-custom-modal-css {
+//   --height: 80%;
+//   --top-offset: 10%;
+//   --bottom-offset: 10%;
+// }
+
+// ion-modal.my-custom-modal-css .modal-wrapper {
+//   height: var(--height);
+//   top: var(--top-offset);
+//   bottom: var(--bottom-offset);
+//   position: absolute;
+//   display: block;
+//   overflow-y: auto; /* Enable vertical scrolling */
+// }
+.accpt {
+  --background: white;
+  border-style: solid;
+  border-radius: 50%;
+  border-width: 2px;
+  border-color: var(--primary-color);
+}
+
+// .spinner {
+//   --spinner-color: var(--primary-color);
+// }
+
+// .ionic-selectable-documentation-configuration {
+//   .modal-wrapper {
+//       ionic-selectable-modal {
+//           ion-header {
+//               ion-toolbar {
+//                   --background: var(--primary-color);
+//               }
+//           }
+//           ion-searchbar {
+//               --background: var(--ion-color-dark);
+//               .searchbar-input {
+//                   background: transparent;
+//                   color: #fff;
+//                   box-shadow: unset;
+//                   border: 1px solid black;
+//               }
+//               .searchbar-search-icon {
+//                   color: #fff;
+//               }
+//               .searchbar-clear-button {
+//                   color: #fff;
+//               }
+//           }
+//           ion-list {
+//               background: var(--bg-color);
+//               ion-item-group {
+//                   ion-item {
+//                       --background: var(--bg-color);
+//                       --color: black;
+//                       ion-icon {
+//                           color: black;
+//                       }
+//                   }
+//               }
+//           }
+//           ion-content {
+//               --background: var(--bg-color) !important;
+//               --color: black;
+//           }
+//       }
+//   }
+// }
+ion-datetime {
+  --background: white;
+  color: black;
+}
+.uploadsuccess {
+  color: green;
+}
+.spinner {
+  --spinner-color: var(--primary-color);
+  --background: white;
+  color: var(--primary-color);
+}
+ion-alert.custom-alert {
+  --backdrop-opacity: 0.7;
+  --background: white;
+}
+
+.custom-alert .alert-button-group {
+  padding: 8px;
+}
+
+button.alert-button.alert-button-confirm {
+  background-color: var(--ion-color-success);
+  color: var(--ion-color-success-contrast);
+}
+
+.md button.alert-button.alert-button-confirm {
+  border-radius: 4px;
+}
+ion-searchbar {
+  --background: white;
+  --color: black;
+  --box-shadow: none !important;
+}
+@-webkit-keyframes scale-in-center {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes scale-in-center {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.container {
+  -webkit-animation: scale-in-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    both;
+  animation: scale-in-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  img {
+    height: 100px;
+    margin-top: 75%;
+  }
+}
+ion-datetime-button{
+  --background: white;
+  --color:black;
+}
+ion-select{
+ion-select-option{
+  --background: white;
+}
+}
+
+.full-screen-modal {
+  width: 100vw;
+  height: 100vh;
+}
